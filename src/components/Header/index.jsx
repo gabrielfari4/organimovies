@@ -2,11 +2,12 @@ import './styles.css'
 
 const Header = () => {
     return (
-        <section className='header'>
-            <div>
-                
-            </div>
-        </section>
+        <header className='header'>
+            <img src="./images/voyagelune.jpg" alt="" />
+
+                <p>OrganiMovies</p>
+
+        </header>
     )
 }
 
