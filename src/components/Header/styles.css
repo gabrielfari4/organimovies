@@ -1,0 +1,9 @@
+.header {
+    height: 300px;
+    width: 100%;
+    background-image: url(../../../public/images/voyagelune.jpg);
+    opacity: 0.9;
+    filter: brightness(0.4) blur(3.5px);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
