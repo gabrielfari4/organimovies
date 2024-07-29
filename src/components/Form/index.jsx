@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import Input from '../Input';
 import './styles.css'
 
 const Form = () => {
+
+    const [film, setFilm] = useState('');
+
+    
+
     return (
         <section className="form">
             <form>
