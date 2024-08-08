@@ -2,7 +2,7 @@ import './styles.css';
 
 const Button = (props) => {
     return (
-        <button className='button'>
+        <button className='button' onClick={props.onClicked}>
             {props.children}
         </button>
     )
