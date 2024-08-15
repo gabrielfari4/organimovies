@@ -7,10 +7,19 @@ const Input = (props) => {
     }
 
     return (
-        <div className='input'>
-            <label>{props.label}</label>
-            <input type="text" placeholder={props.placeholder} onChange={onType}/>
-        </div>
+        <>
+            <div className='input'>
+                <label>{props.label}</label>
+                <div className='search'>
+                    <input type="text" placeholder={props.placeholder} onChange={onType} />
+                    <button onClick={props.onClicked}>
+                        <img src="../../images/search.svg" alt="estrela" />
+
+                    </button>
+                </div>
+                    
+            </div>
+        </>
     )
 }
 

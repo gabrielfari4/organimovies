@@ -8,5 +8,31 @@
         border-radius: 20px;
         padding: 36px 64px;
         box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.08);
+        
+        
+    }
+}
+
+.moviePosters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 16px;
+    img {
+        height: 256px;
+        width: 174px;
+        border-radius: 4px;
+        &:hover {
+            /* height: 384px; */
+            /* width: 259px; */
+            transform: scale(1.5);
+        }
+    }
+}
+
+.genre {
+    h2 {
+        font-weight: normal;
     }
 }

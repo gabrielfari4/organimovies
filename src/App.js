@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Form from './components/Form';
 import Header from './components/Header';
 import Rating from './components/Rating';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
       })
     }
     
+    <Footer />
     </div>
   );
 }

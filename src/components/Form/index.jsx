@@ -4,36 +4,76 @@ import './styles.css'
 import Dropdown from '../Dropdown';
 import Button from '../Button';
 import Rate from '../Rate';
-import StarRating from '../StarRating';
+import APIKey from '../../config/key';
 
 const Form = (props) => {
 
     const [name, setName] = useState('');
-    const [genre, setGenre] = useState('');
+    const [genre, setGenre] = useState([]);
     const [rating, setRating] = useState('');
+    const [movies, setMovies] = useState([])
 
+    const fetchMovie = async () => {
+        try {
+            const data = await fetch(`https://api.themoviedb.org/3/search/movie?query=${name}&api_key=${APIKey}`)
+            const response = await data.json()
+            console.log(response.results)
+            console.log(name)
+            setMovies(response.results)
+        } catch (error) {
+            console.error("Erro ao buscar o filme:", error);
+        }
+    }
+    
     const onSave = (e) => {
         e.preventDefault()
         props.onSubmittingMovie({
-          name,
-          genre,
-          rating
+            name,
+            genre,
+            rating
         })
         setName('');
         setGenre('');
         setRating('');
     }
-
+    
     const Info = () => {
         console.log(name, genre, rating)
     }
-
-
+    
+    
     return (
         <section className="form">
             <form onSubmit={onSave}>
                 <h2>Preencha os dados para classificar os filmes</h2>
-                <Input label='Nome' placeholder='Escreva o nome do filme' onChanged={value => setName(value)} value={name}/>
+               
+            
+                    <Input label='Nome' placeholder='Busque o nome do filme' onChanged={value => setName(value)} value={name} onClicked={fetchMovie}/>
+                    
+                    
+
+                <div className='moviePosters'>
+                    {movies.map((movie) => {
+                        return (
+                            <>                                
+                                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Poster do filme ${movie.title}`} title={movie.title} key={movie.id} onClick={() => {
+                                    setName(movie.title)
+                                    setGenre(movie.genre_ids)
+                                    console.log(name)    
+                                    console.log(genre)    
+                                }
+                                }/>
+                            
+                            </>
+                        )
+                    })}
+
+                </div>
+
+                <div className='genre'>
+                    <h2>Gênero</h2>
+                    <p></p>
+                </div>
                 
                 <Dropdown label='Gênero'
                 items={props.genre}
