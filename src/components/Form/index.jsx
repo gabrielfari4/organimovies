@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Input from '../Input';
 import './styles.css'
 import Dropdown from '../Dropdown';
@@ -9,9 +9,11 @@ import APIKey from '../../config/key';
 const Form = (props) => {
 
     const [name, setName] = useState('');
-    const [genre, setGenre] = useState([]);
+    const [genres, setGenres] = useState([]);
     const [rating, setRating] = useState('');
     const [movies, setMovies] = useState([])
+    const [genreList, setGenreList] = useState([]);
+    const [genreArray, setGenreArray] = useState([]);
 
     const fetchMovie = async () => {
         try {
@@ -24,22 +26,37 @@ const Form = (props) => {
             console.error("Erro ao buscar o filme:", error);
         }
     }
+
+    const fetchGenre = async () => {
+        try {
+            const data = await fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${APIKey}`)
+            const response = await data.json()
+            setGenreList(response.genres)
+        } catch (e) {
+            console.error("Erro ao buscar o filme:", e);
+        }
+    }
     
     const onSave = (e) => {
         e.preventDefault()
         props.onSubmittingMovie({
             name,
-            genre,
+            genres,
             rating
         })
         setName('');
-        setGenre('');
+        setGenres([]);
         setRating('');
     }
     
     const Info = () => {
-        console.log(name, genre, rating)
+        console.log(name, genres, rating)
     }
+
+    useEffect(() => {
+        const updatedGenreArray = genreList.filter((genre) => genres.includes(genre.id));
+        setGenreArray(updatedGenreArray);
+    }, [genres, genreList]);
     
     
     return (
@@ -47,10 +64,11 @@ const Form = (props) => {
             <form onSubmit={onSave}>
                 <h2>Preencha os dados para classificar os filmes</h2>
                
-            
-                    <Input label='Nome' placeholder='Busque o nome do filme' onChanged={value => setName(value)} value={name} onClicked={fetchMovie}/>
-                    
-                    
+                    <Input label='Nome' placeholder='Busque o nome do filme' onChanged={value => setName(value)} value={name} onClicked={() => {
+                        fetchMovie() 
+                        fetchGenre()
+                    }
+                    }/>
 
                 <div className='moviePosters'>
                     {movies.map((movie) => {
@@ -58,9 +76,11 @@ const Form = (props) => {
                             <>                                
                                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Poster do filme ${movie.title}`} title={movie.title} key={movie.id} onClick={() => {
                                     setName(movie.title)
-                                    setGenre(movie.genre_ids)
+                                    setGenres(movie.genre_ids)
                                     console.log(name)    
-                                    console.log(genre)    
+                                    console.log(genres)
+                                    console.log(genreList)
+                                    console.log(genreArray)  
                                 }
                                 }/>
                             
@@ -72,17 +92,18 @@ const Form = (props) => {
 
                 <div className='genre'>
                     <h2>Gênero</h2>
-                    <p></p>
+                    <ul>
+                        
+                        {genreArray.map((gnr) => {
+                            return (
+                                <li>{gnr.name}</li>
+                            )
+                        })}     
+                                     
+                        
+                    </ul>
                 </div>
                 
-                <Dropdown label='Gênero'
-                items={props.genre}
-                value={genre}
-                onChanged={value => {
-                    setGenre(value)
-                    console.log(value)
-                }}
-                />
                 <Rate
                     value={rating}
                     onClicked={value => {
