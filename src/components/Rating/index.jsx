@@ -40,7 +40,7 @@ const Rating = (props) => {
                 {props.movies.map(movie => {
                     return <Movie 
                         key={movie.name}
-                        name={movie.name} genre={movie.genre}
+                        name={movie.name} genres={movie.genreArray}
                         //image={movie.image}
                         />
                 })}

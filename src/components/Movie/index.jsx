@@ -31,7 +31,7 @@ const Movie = (props) => {
       };
 
       useEffect(() => {
-        fetchMovie();
+        fetchMovie()
       }, [props.name]);
 
 
@@ -42,7 +42,13 @@ const Movie = (props) => {
             </div>
             <div className='rodape'>
                 <h4>{name}</h4>
-                <h5>{props.genre}</h5>
+                <ul>
+                  {props.genres.map((genre) => {
+                    return (
+                      <li>{genre.name}</li>
+                    )
+                  })}
+                </ul>
             </div>
         </div>
     )

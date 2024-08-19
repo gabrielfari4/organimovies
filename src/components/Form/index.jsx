@@ -42,15 +42,17 @@ const Form = (props) => {
         props.onSubmittingMovie({
             name,
             genres,
-            rating
+            rating,
+            genreArray
         })
         setName('');
         setGenres([]);
         setRating('');
+        setGenreArray([]);
     }
     
     const Info = () => {
-        console.log(name, genres, rating)
+        console.log(name, genres, rating, genreArray)
     }
 
     useEffect(() => {
@@ -77,30 +79,21 @@ const Form = (props) => {
                                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Poster do filme ${movie.title}`} title={movie.title} key={movie.id} onClick={() => {
                                     setName(movie.title)
                                     setGenres(movie.genre_ids)
-                                    console.log(name)    
-                                    console.log(genres)
-                                    console.log(genreList)
-                                    console.log(genreArray)  
                                 }
                                 }/>
-                            
                             </>
                         )
                     })}
-
                 </div>
 
                 <div className='genre'>
                     <h2>Gênero</h2>
                     <ul>
-                        
                         {genreArray.map((gnr) => {
                             return (
                                 <li>{gnr.name}</li>
                             )
-                        })}     
-                                     
-                        
+                        })}
                     </ul>
                 </div>
                 
@@ -108,7 +101,6 @@ const Form = (props) => {
                     value={rating}
                     onClicked={value => {
                     setRating(value)
-                    console.log(value)
                 } }/>
                 <Button onClicked={Info}>Classificar</Button>
             </form>
