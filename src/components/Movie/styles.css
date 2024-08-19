@@ -1,10 +1,9 @@
 .movie {
     width: 280px;
     img {
-        width: 100px;
-        border-radius: 50%;
-        position: relative;
-        bottom: -50px;
+        height: 256px;
+        width: 174px;
+        border-radius: 6px;
     }
     .cabecalho {
         border-radius: 10px 10px 0px 0px;
@@ -13,8 +12,9 @@
         background: #FFFFFF;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
         border-radius: 0px 0px 10px 10px;
-        padding-top: 90px;
-        padding-bottom: 40px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        width: 174px;
         h4 {
             color: #6278F7;
             font-size: 18px;
@@ -22,11 +22,14 @@
             font-weight: bold;
             margin-bottom: 8px;
         }
-        h5 {
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
             font-size: 18px;
             line-height: 22px;
             color: #212121;
-            padding: 0 16px;
         }
     }
 }

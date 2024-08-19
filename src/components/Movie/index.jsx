@@ -37,7 +37,7 @@ const Movie = (props) => {
 
     return (
         <div className='movie'>
-            <div className='cabecalho' style={{ backgroundColor: 'lightblue' }}>
+            <div className='cabecalho'>
             <img src={imgUrl} alt={`Foto ${props.name}`} />
             </div>
             <div className='rodape'>

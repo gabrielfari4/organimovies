@@ -35,6 +35,8 @@ function App() {
     },
   ]
 
+  const rating2 = ['1','2','3','4','5']
+
   const [movies, setMovies] = useState([]);
 
   const onSubmittedMovie = (movie) => {
@@ -45,15 +47,15 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Form onSubmittingMovie={movie => onSubmittedMovie(movie)} genre={genre}/>
+      <Form onSubmittingMovie={movie => onSubmittedMovie(movie)}/>
 
     {
-      rating.map(rate => {
+      rating2.map(rate => {
         return (
           <Rating 
-            rating={rate.rate}
-            key={rate.rate}
-            movies={movies.filter(movie => movie.rating === rate.rate)}
+            rating={rate}
+            key={rate}
+            movies={movies.filter(movie => movie.rating === rate)}
           />
           
         )

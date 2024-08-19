@@ -41,7 +41,6 @@ const Rating = (props) => {
                     return <Movie 
                         key={movie.name}
                         name={movie.name} genres={movie.genreArray}
-                        //image={movie.image}
                         />
                 })}
             </div>

@@ -75,7 +75,8 @@ const Form = (props) => {
                 <div className='moviePosters'>
                     {movies.map((movie) => {
                         return (
-                            <>                                
+                            <> 
+                            {/* TODO: incluir estilo (borda?) quando selecionado */}
                                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Poster do filme ${movie.title}`} title={movie.title} key={movie.id} onClick={() => {
                                     setName(movie.title)
                                     setGenres(movie.genre_ids)
@@ -86,7 +87,7 @@ const Form = (props) => {
                     })}
                 </div>
 
-                <div className='genre'>
+                {/* <div className='genre'>
                     <h2>Gênero</h2>
                     <ul>
                         {genreArray.map((gnr) => {
@@ -95,7 +96,7 @@ const Form = (props) => {
                             )
                         })}
                     </ul>
-                </div>
+                </div> */}
                 
                 <Rate
                     value={rating}
