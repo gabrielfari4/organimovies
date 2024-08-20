@@ -6,6 +6,7 @@ const Rating = (props) => {
     return (
         props.movies.length > 0 && <section className='rating' style={{backgroundColor: 'gray'}}>
             <h3 style={{borderColor: 'black'}}>{
+                // TODO: montar função (provavelmente com for e push)
                 props.rating === "5" ?
                 <>
                 <StarRating />
@@ -41,6 +42,7 @@ const Rating = (props) => {
                     return <Movie 
                         key={movie.name}
                         name={movie.name} genres={movie.genreArray}
+                        id={movie.id}
                         />
                 })}
             </div>

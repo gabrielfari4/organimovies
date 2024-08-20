@@ -17,25 +17,7 @@ function App() {
     'Terror',
   ]
 
-  const rating = [
-    {
-      rate: '1'
-    },
-    {
-      rate: '2'
-    },
-    {
-      rate: '3'
-    },
-    {
-      rate: '4'
-    },
-    {
-      rate: '5'
-    },
-  ]
-
-  const rating2 = ['1','2','3','4','5']
+  const rating = ['1','2','3','4','5']
 
   const [movies, setMovies] = useState([]);
 
@@ -50,7 +32,7 @@ function App() {
       <Form onSubmittingMovie={movie => onSubmittedMovie(movie)}/>
 
     {
-      rating2.map(rate => {
+      rating.map(rate => {
         return (
           <Rating 
             rating={rate}

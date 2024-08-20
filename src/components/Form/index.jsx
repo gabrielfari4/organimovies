@@ -14,6 +14,7 @@ const Form = (props) => {
     const [movies, setMovies] = useState([])
     const [genreList, setGenreList] = useState([]);
     const [genreArray, setGenreArray] = useState([]);
+    const [movieId, setMovieId] = useState('');
 
     const fetchMovie = async () => {
         try {
@@ -43,16 +44,18 @@ const Form = (props) => {
             name,
             genres,
             rating,
-            genreArray
+            genreArray,
+            movieId
         })
         setName('');
         setGenres([]);
         setRating('');
         setGenreArray([]);
+        setMovieId('')
     }
     
     const Info = () => {
-        console.log(name, genres, rating, genreArray)
+        console.log(name, genres, rating, genreArray, movieId)
     }
 
     useEffect(() => {
@@ -80,6 +83,7 @@ const Form = (props) => {
                                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`Poster do filme ${movie.title}`} title={movie.title} key={movie.id} onClick={() => {
                                     setName(movie.title)
                                     setGenres(movie.genre_ids)
+                                    setMovieId(movie.id)
                                 }
                                 }/>
                             </>

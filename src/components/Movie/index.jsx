@@ -6,6 +6,7 @@ const Movie = (props) => {
 
     const [imgUrl, setImgUrl] = useState('');
     const [name, setName] = useState('');
+    const [nameBr, setNameBr] = useState('');
 
     const fetchMovie = async () => {
         try {
@@ -30,8 +31,29 @@ const Movie = (props) => {
         }
       };
 
+      const fetchId = async () => {
+        try {
+          const data = await fetch(`https://api.themoviedb.org/3/movie/${props.id}/alternative_titles?api_key=${APIKey}`)
+          const response = await data.json();
+
+          if (response.length) {
+            const titles = response.titles
+            const titleBr = titles.filter((title) => {
+              return title.iso_3166_1 === "BR"
+            })
+            setNameBr(titleBr[0].title)
+          }
+        } catch (e) {
+          console.error("Erro ao buscar o nome do filme:", e);
+          setNameBr('');
+        }
+      }
+
       useEffect(() => {
         fetchMovie()
+        fetchId()
+        console.log(props.id)
+
       }, [props.name]);
 
 
@@ -41,7 +63,9 @@ const Movie = (props) => {
             <img src={imgUrl} alt={`Foto ${props.name}`} />
             </div>
             <div className='rodape'>
+              {/* TODO: puxar o nome sempre em PT ou EN */}
                 <h4>{name}</h4>
+                <h5>{nameBr}</h5>
                 <ul>
                   {props.genres.map((genre) => {
                     return (
