@@ -12,7 +12,7 @@ const Footer = () => {
                 <img src="/images/logo.png" alt="Logo Organo" />
             </div>
             <div className='text'>
-                <p>Desenvolvido por Gabriel Faria.</p>
+                <p>Desenvolvido por Gabriel Faria. <br></br>Baseado no projeto Organo da Alura.</p>
             </div>
         </section>
     )

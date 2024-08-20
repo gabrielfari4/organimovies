@@ -17,7 +17,7 @@ function App() {
     'Terror',
   ]
 
-  const rating = ['1','2','3','4','5']
+  const rating = ['5','4','3','2','1']
 
   const [movies, setMovies] = useState([]);
 

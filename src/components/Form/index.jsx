@@ -119,8 +119,9 @@ const Form = (props) => {
             setRating(value);
           }}
         />
-        
-        <Button onClicked={Info}>Classificar</Button>
+        <div className="submit-button">
+            <Button onClicked={Info}>Classificar</Button>
+        </div>        
       </form>
     </section>
   );

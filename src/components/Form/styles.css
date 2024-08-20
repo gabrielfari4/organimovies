@@ -33,8 +33,7 @@
     }
 }
 
-.genre {
-    h2 {
-        font-weight: normal;
-    }
+/* TODO: ajustar posição, tamanho e cor do botão */
+.submit-button {
+    text-align: center;
 }

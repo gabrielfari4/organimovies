@@ -67,7 +67,6 @@ const Movie = (props) => {
             <img src={imgUrl} alt={`Foto ${props.name}`} />
             </div>
             <div className='rodape'>
-              {/* TODO: puxar o nome sempre em PT ou EN */}
                 <h4>{name}</h4>
                 <h6>{nameBr}</h6>
                 <ul>
