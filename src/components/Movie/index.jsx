@@ -36,13 +36,17 @@ const Movie = (props) => {
           const data = await fetch(`https://api.themoviedb.org/3/movie/${props.id}/alternative_titles?api_key=${APIKey}`)
           const response = await data.json();
 
-          if (response.length) {
-            const titles = response.titles
-            const titleBr = titles.filter((title) => {
-              return title.iso_3166_1 === "BR"
-            })
-            setNameBr(titleBr[0].title)
-          }
+          if (response.titles && response.titles.length > 0) {
+            const titleBr = response.titles.find(title => title.iso_3166_1 === "BR");
+                if (titleBr) {
+                    setNameBr(titleBr.title);
+                } else {
+                    setNameBr('Título BR não encontrado');
+                } 
+              } else {
+                console.error("Nenhum título alternativo encontrado para o filme ID:", props.id);
+                setNameBr('');
+            }
         } catch (e) {
           console.error("Erro ao buscar o nome do filme:", e);
           setNameBr('');
@@ -52,9 +56,9 @@ const Movie = (props) => {
       useEffect(() => {
         fetchMovie()
         fetchId()
-        console.log(props.id)
+        console.log(nameBr)
 
-      }, [props.name]);
+      }, [props.name, props.id]);
 
 
     return (
@@ -65,7 +69,7 @@ const Movie = (props) => {
             <div className='rodape'>
               {/* TODO: puxar o nome sempre em PT ou EN */}
                 <h4>{name}</h4>
-                <h5>{nameBr}</h5>
+                <h6>{nameBr}</h6>
                 <ul>
                   {props.genres.map((genre) => {
                     return (

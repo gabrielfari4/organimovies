@@ -6,8 +6,9 @@
         display: inline-block;
         padding-bottom: 8px;
     }
-    .movie {
+    .movie-container {
         display: flex;
+        flex-direction: row;
         justify-content: space-around;
         margin-top: 32px;
         flex-wrap: wrap;

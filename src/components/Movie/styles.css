@@ -12,24 +12,34 @@
         background: #FFFFFF;
         box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.08);
         border-radius: 0px 0px 10px 10px;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding: 20px auto;
+        height: 175px;
         width: 174px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
         h4 {
             color: #6278F7;
             font-size: 18px;
             line-height: 22px;
             font-weight: bold;
+            padding: 10px;
+        }
+        h6 {
             margin-bottom: 8px;
         }
         ul {
             list-style: none;
             padding-left: 0;
+            margin-bottom: 10px;
         }
         li {
             font-size: 18px;
             line-height: 22px;
             color: #212121;
+            
         }
     }
 }

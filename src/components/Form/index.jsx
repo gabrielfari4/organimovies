@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Input from '../Input';
 import './styles.css'
-import Dropdown from '../Dropdown';
 import Button from '../Button';
 import Rate from '../Rate';
 import APIKey from '../../config/key';

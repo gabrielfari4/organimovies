@@ -28,6 +28,9 @@
             /* width: 259px; */
             transform: scale(1.5);
         }
+        &:active {
+            transform: scale(1.2);
+        }
     }
 }
 

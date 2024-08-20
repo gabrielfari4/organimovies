@@ -37,12 +37,12 @@ const Rating = (props) => {
                 <StarRating /> : null
                 }
                 </h3>
-            <div className='movie'>
+            <div className='movie-container'>
                 {props.movies.map(movie => {
                     return <Movie 
                         key={movie.name}
                         name={movie.name} genres={movie.genreArray}
-                        id={movie.id}
+                        id={movie.movieId}
                         />
                 })}
             </div>
