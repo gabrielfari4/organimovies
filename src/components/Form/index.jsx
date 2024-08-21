@@ -4,13 +4,13 @@ import "./styles.css";
 import Button from "../Button";
 import Rate from "../Rate";
 import APIKey from "../../config/key";
+import data from '../../genres.json'
 
 const Form = (props) => {
   const [name, setName] = useState("");
   const [genres, setGenres] = useState([]);
   const [rating, setRating] = useState("");
   const [movies, setMovies] = useState([]);
-  const [genreList, setGenreList] = useState([]);
   const [genreArray, setGenreArray] = useState([]);
   const [movieId, setMovieId] = useState("");
   const [selectedMovieId, setSelectedMovieId] = useState(null);
@@ -26,18 +26,6 @@ const Form = (props) => {
       setMovies(response.results);
     } catch (error) {
       console.error("Erro ao buscar o filme:", error);
-    }
-  };
-
-  const fetchGenre = async () => {
-    try {
-      const data = await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${APIKey}`
-      );
-      const response = await data.json();
-      setGenreList(response.genres);
-    } catch (e) {
-      console.error("Erro ao buscar o filme:", e);
     }
   };
 
@@ -62,11 +50,11 @@ const Form = (props) => {
   };
 
   useEffect(() => {
-    const updatedGenreArray = genreList.filter((genre) =>
+    const updatedGenreArray = data.genres.filter((genre) =>
       genres.includes(genre.id)
     );
     setGenreArray(updatedGenreArray);
-  }, [genres, genreList]);
+  }, [genres]);
 
   return (
     <section className="form">
@@ -81,7 +69,6 @@ const Form = (props) => {
           onClicked={(e) => {
             e.preventDefault()
             fetchMovie();
-            fetchGenre();
             setName("");
             setGenres([]);
             setGenreArray([]);
