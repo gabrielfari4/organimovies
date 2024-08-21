@@ -18,6 +18,7 @@
             border-radius: 6px 0 0 6px;
             display: inline;
             
+            
         }
         button {
             display: inline;
@@ -27,7 +28,27 @@
             border: 0.5px solid #999999;
             img {
                 width: 40px;
-                height: 40px;;
+                height: 40px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .input {
+        .search {
+            input {
+                height: 30px;
+            }
+            input::placeholder {
+                font-size: 18px;
+            }
+            button {
+                width: 20%;
+                img {
+                    width: 25px;
+                    height: 25px;
+                }
             }
         }
     }

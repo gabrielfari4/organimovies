@@ -1,5 +1,6 @@
 .footer {
-    height: 113px;
+    height: 10vh;
+    width: 100vw;
     background-color: #1e1e1e;
     display: flex;
     justify-content: space-around;
@@ -7,11 +8,14 @@
     .icons {
         display: flex;
         gap: 30px;
+        width: 20vw;
         img {
-            height: 20px;
+            height: 3vh;
         }
     }
     .logo {
+        height: 3vh;
+        width: 20vw;
         display: flex;
         align-items: center;
         img {
@@ -19,7 +23,32 @@
         }
     }
     .text {
+        font-size: 14px;
+        width: 20vw;
         color: #ffffff;
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .footer {
+        .icons {
+            img {
+                height: 2vh;
+            }
+        }
+        .text {
+            font-size: 12px;
+        }
+
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .footer {
+        .text {
+            font-size: 10px;
+        }
+
     }
 }

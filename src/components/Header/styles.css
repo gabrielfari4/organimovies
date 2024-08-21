@@ -3,13 +3,13 @@
     width: 100%;
     img {
         height: 300px;
-        width: 100%;
+        width: 100vw;
         object-fit: cover;
         opacity: 0.9;
         filter: brightness(0.4) blur(3.5px);
     }
     p {
-        font-size: 54px;
+        font-size: 4vw;
         text-align: center;
         transform: translateY(-180px);
         font-family: 'Courier New', Courier, monospace;
@@ -17,4 +17,22 @@
         color: whitesmoke;
     }
 
+}
+
+@media screen and (max-width: 1000px) {
+    .header {
+        p {
+            font-size: 50px;
+        }
+
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .header {
+        p {
+            font-size: 30px;
+        }
+
+    }
 }

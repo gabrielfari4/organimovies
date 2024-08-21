@@ -9,6 +9,8 @@
     color: #fff;
     margin: 24px auto;
     &:hover {
-        color: #95ffd4;
+        color: #fff;
+        background-color: #727272;
+        border: 3px solid #f6f6f6;
     }
 }
