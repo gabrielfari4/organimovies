@@ -10,14 +10,14 @@ const Movie = (props) => {
 
     const fetchMovie = async () => {
         try {
-          const data = await fetch(`https://api.themoviedb.org/3/search/movie?query=${props.name}&api_key=${APIKey}`);
+          const data = await fetch(`https://api.themoviedb.org/3/movie/${props.id}?api_key=${APIKey}`)
           const response = await data.json();
           
           // Verifique se há resultados antes de acessar a propriedade backdrop_path
-          if (response.results && response.results.length > 0) {
-            const img = `https://image.tmdb.org/t/p/w500${response.results[0].poster_path}`;
+          if (response) {
+            const img = `https://image.tmdb.org/t/p/w500${response.poster_path}`;
             setImgUrl(img); // Atualize o estado com a URL da imagem
-            const originalName = response.results[0].original_title;
+            const originalName = response.original_title;
             setName(originalName);
           } else {
             console.error("Nenhum resultado encontrado para o filme:", props.name);
@@ -72,7 +72,7 @@ const Movie = (props) => {
                 <ul>
                   {props.genres.map((genre) => {
                     return (
-                      <li>{genre.name}</li>
+                      <li key={genre.name}>{genre.name}</li>
                     )
                   })}
                 </ul>

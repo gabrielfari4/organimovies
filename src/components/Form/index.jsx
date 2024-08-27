@@ -14,6 +14,7 @@ const Form = (props) => {
   const [genreArray, setGenreArray] = useState([]);
   const [movieId, setMovieId] = useState("");
   const [selectedMovieId, setSelectedMovieId] = useState(null);
+  const [starCheck, setStarCheck] = useState('');
 
   const fetchMovie = async () => {
     try {
@@ -43,6 +44,7 @@ const Form = (props) => {
     setGenreArray([]);
     setMovieId("");
     setSelectedMovieId("");
+    setStarCheck(false)
   };
 
   const Info = () => {
@@ -99,15 +101,21 @@ const Form = (props) => {
             );
           })}
         </div>
-
+          {/* TODO: verificar reset das estrelas */}
         <Rate
           value={rating}
           onClicked={(value) => {
             setRating(value);
+            console.log(rating, starCheck)
+
           }}
+          check={starCheck}
         />
         <div className="submit-button">
-            <Button onClicked={Info}>Classificar</Button>
+            <Button onClicked={() => {
+              Info()
+              // setStarCheck(null)
+            }}>Classificar</Button>
         </div>        
       </form>
     </section>
