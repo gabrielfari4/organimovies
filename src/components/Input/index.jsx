@@ -13,7 +13,7 @@ const Input = (props) => {
                 <div className='search'>
                     <input type="text" placeholder={props.placeholder} onChange={onType} />
                     <button onClick={props.onClicked}>
-                        <img src="../../images/search.svg" alt="estrela" />
+                        <img src="../../images/search.svg" alt="search icon" />
 
                     </button>
                 </div>

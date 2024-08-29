@@ -1,10 +1,21 @@
 import './styles.css'
 
 const Stars = (props) => {
-    const inputs = document.querySelectorAll('input[name="rating"]')
-    inputs.forEach((star) => {
-        star.checked = props.check
-      })
+    /* if (props.check === false) {
+        const inputs = document.querySelectorAll('input[name="rating"]')
+        inputs.forEach((star) => {
+            star.checked = props.check
+            star.checked = null
+        })
+        
+    } */
+    
+    if (props.check === false) {
+        const inputs = Array.from(document.querySelectorAll('input[name="rating"]'))
+        const star = inputs.find((star) => star.value === props.value)
+        //star.checked = props.check
+        star.checked = null
+    }
 
     /* let rate = props.value
     const inputs = document.querySelector(`input[value="${rate}"]`)
