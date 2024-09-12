@@ -103,7 +103,7 @@ const Form = (props) => {
         />
 
         <div className="moviePosters">
-          {movies.map((movie) => {
+          {movies.length ? movies.map((movie) => {
             const imgClass = movie.id === selectedMovieId ? "selected" : "";
             return (
               <>
@@ -122,7 +122,7 @@ const Form = (props) => {
                 />
               </>
             );
-          })}
+          }) : <p>Nenhum resultado encontrado</p>}
         </div>
           <div>
           {renderStars}

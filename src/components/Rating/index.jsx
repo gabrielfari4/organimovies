@@ -21,7 +21,7 @@ const Rating = (props) => {
     }, [props.rating])
 
     return (
-        props.movies.length > 0 && <section className='rating' style={{backgroundColor: 'gray'}}>
+        props.movies.length > 0 && <section className='rating' style={{backgroundColor: '#445566'}}>
             <h3 style={{borderColor: 'black'}}>
                 {ratingStars}
             </h3>

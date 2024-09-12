@@ -1,13 +1,12 @@
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import './styles.css'
 
 const Footer = () => {
     return (
         <section className='footer'>
             <div className='icons'>
-                {/* TODO: trocar ícones e incorporar âncoras */}
-                <img src="/images/fb.png" alt="Logo Facebook" />
-                <img src="/images/tw.png" alt="Logo Twitter/X" />
-                <img src="/images/ig.png" alt="Logo Instagram" />
+                <a href='https://www.linkedin.com/in/gabrielfaria88/' target='_blank' rel='noreferrer'><FaLinkedin size={30} color='white'/></a>
+                <a href="https://github.com/gabrielfari4" target='_blank' rel='noreferrer'><FaGithub size={30} color='white'/></a>
             </div>
             <div className='logo'>
                 <img src="/images/logo.png" alt="Logo Organo" />
