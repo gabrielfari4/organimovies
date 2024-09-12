@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import APIKey from '../../config/key'
 import './styles.css'
+import { IoMdCloseCircle } from 'react-icons/io';
 
 const Movie = (props) => {
 
@@ -56,13 +57,17 @@ const Movie = (props) => {
       useEffect(() => {
         fetchMovie()
         fetchId()
-        console.log(nameBr)
 
       }, [props.name, props.id]);
 
 
     return (
         <div className='movie'>
+          <IoMdCloseCircle 
+            size={25}
+            className='deletar'
+            onClick={() => props.onDeleting(props.id)}
+          />
             <div className='cabecalho'>
             <img src={imgUrl} alt={`Foto ${props.name}`} />
             </div>

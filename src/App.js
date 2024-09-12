@@ -16,6 +16,10 @@ function App() {
     console.log(movies)
   }
 
+  const deleteMovie = (id) => {
+    setMovies(movies.filter(movie => movie.movieId !== id))
+  }
+
   return (
     <div className="App">
       <Header />
@@ -28,6 +32,7 @@ function App() {
             rating={rate}
             key={rate}
             movies={movies.filter(movie => movie.rating === rate)}
+            onDeleting={deleteMovie}
           />
           
         )

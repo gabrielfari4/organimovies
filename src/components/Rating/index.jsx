@@ -29,8 +29,10 @@ const Rating = (props) => {
                 {props.movies.map(movie => {
                     return <Movie 
                         key={movie.name}
-                        name={movie.name} genres={movie.genreArray}
+                        name={movie.name} 
+                        genres={movie.genreArray}
                         id={movie.movieId}
+                        onDeleting={props.onDeleting}
                         />
                 })}
             </div>

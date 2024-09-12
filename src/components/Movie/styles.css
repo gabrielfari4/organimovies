@@ -1,4 +1,5 @@
 .movie {
+    position: relative;
     width: 280px;
     img {
         height: 256px;
@@ -43,4 +44,19 @@
             
         }
     }
+    .deletar {
+        position: absolute;
+        right: 40px;
+        top: -15px;
+        cursor: pointer;
+        color: transparent;
+        border-radius: 50px;
+    }
+    &:hover {
+        .deletar {
+            color: black;
+            background-color: white;
+        }
+    }
+    
 }

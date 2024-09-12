@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Input from "../Input";
 import "./styles.css";
 import Button from "../Button";
@@ -45,7 +45,6 @@ const Form = (props) => {
     setGenreArray([]);
     setMovieId("");
     setSelectedMovieId("");
-    //setStarCheck(false)
   };
 
   const Info = () => {
@@ -59,11 +58,8 @@ const Form = (props) => {
     setGenreArray(updatedGenreArray);
   }, [genres]);
 
-  useEffect(() => {
-    setRenderStars(renderStar)
-  }, [movieId])
 
-  const renderStar = () => {
+  const renderStar = useCallback(() => {
     return (
       <Rate
         value={rating}
@@ -75,11 +71,14 @@ const Form = (props) => {
         check={starCheck}
       />
     )
-  }
+  }, [rating, starCheck])
+
+  useEffect(() => {
+    setRenderStars(renderStar)
+  }, [movieId])
 
   const handleStars = () => {
     setStarCheck(false)
-    //setRating('')
   }
 
   return (
@@ -125,18 +124,8 @@ const Form = (props) => {
             );
           })}
         </div>
-          {/* TODO: verificar reset das estrelas */}
           <div>
           {renderStars}
-        {/* <Rate
-          value={rating}
-          onClicked={(value) => {
-            setRating(value);
-            console.log(rating, starCheck, value)
-            
-            }}
-            check={starCheck}
-            /> */}
           </div>
         <div className="submit-button">
             <Button onClicked={() => {

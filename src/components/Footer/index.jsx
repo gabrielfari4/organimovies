@@ -4,6 +4,7 @@ const Footer = () => {
     return (
         <section className='footer'>
             <div className='icons'>
+                {/* TODO: trocar ícones e incorporar âncoras */}
                 <img src="/images/fb.png" alt="Logo Facebook" />
                 <img src="/images/tw.png" alt="Logo Twitter/X" />
                 <img src="/images/ig.png" alt="Logo Instagram" />
